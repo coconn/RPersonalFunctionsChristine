@@ -9,7 +9,7 @@
 ##   conf.interval: the percent range of the confidence interval (default is 95%)
 
 summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
-                      conf.interval=.95, .drop=TRUE) {
+                      conf.interval=.95, .drop=TRUE, renameallcols=FALSE) {
       library(plyr)
       
       # New version of length which can handle NA's: if na.rm==T, don't count them
@@ -30,8 +30,6 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
                      measurevar
       )
       
-      # Rename the "mean" column    
-      datac <- rename(datac, c("mean" = measurevar))
       
       datac$se <- datac$sd / sqrt(datac$N)  # Calculate standard error of the mean
       
@@ -40,6 +38,20 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
       # e.g., if conf.interval is .95, use .975 (above/below), and use df=N-1
       ciMult <- qt(conf.interval/2 + .5, datac$N-1)
       datac$ci <- datac$se * ciMult
+      
+      # rename columns
+      if(renameallcols==TRUE){ 
+            #rename all the cols
+            datac <- rename(datac, c("mean" = paste("mean",measurevar,sep="")))
+            datac <- rename(datac, c("sd" = paste("sd",measurevar,sep="")))
+            datac <- rename(datac, c("se" = paste("se",measurevar,sep="")))
+            datac <- rename(datac, c("ci" = paste("ci",measurevar,sep="")))
+            
+      } else { 
+            # only rename mean
+            datac <- rename(datac, c("mean" = measurevar))
+      }
+      
       
       return(datac)
 }

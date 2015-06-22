@@ -42,14 +42,14 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
       # rename columns
       if(renameallcols==TRUE){ 
             #rename all the cols
-            datac <- rename(datac, c("mean" = paste("mean",measurevar,sep="")))
-            datac <- rename(datac, c("sd" = paste("sd",measurevar,sep="")))
-            datac <- rename(datac, c("se" = paste("se",measurevar,sep="")))
-            datac <- rename(datac, c("ci" = paste("ci",measurevar,sep="")))
+            datac <- plyr::rename(datac, c("mean" = paste("mean",measurevar,sep="")))
+            datac <- plyr::rename(datac, c("sd" = paste("sd",measurevar,sep="")))
+            datac <- plyr::rename(datac, c("se" = paste("se",measurevar,sep="")))
+            datac <- plyr::rename(datac, c("ci" = paste("ci",measurevar,sep="")))
             
       } else { 
             # only rename mean
-            datac <- rename(datac, c("mean" = measurevar))
+            datac <- plyr::rename(datac, c("mean" = measurevar))
       }
       
       

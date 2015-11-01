@@ -1,5 +1,5 @@
 # code courtesy user Dason on stackoverflow (https://stackoverflow.com/users/1003565/dason)
-#https://stackoverflow.com/questions/29260139/r-function-to-perform-anova-and-tukeyhsd-from-sample-mean-sd-and-n
+# https://stackoverflow.com/questions/29260139/r-function-to-perform-anova-and-tukeyhsd-from-sample-mean-sd-and-n
 
 # how to run an ANOVA when you want to only input the mean, sd and N for each group
 

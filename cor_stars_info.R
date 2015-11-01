@@ -38,7 +38,9 @@ cor_stars_info = function(x,y,subscript) {
       
       l <- list(cor = round(cor_info$estimate,4), star = cor_stars, numobs = numobs, subsc = subsc)
       
-      info <- substitute(ρ[subsc] == cor~star*","~italic(n) == numobs,l)
+      info <- substitute(italic(r)[subsc] == cor~star*","~italic(n) == numobs,l)
+      #old info, when I thought that pearson's symbol was ρ and not 
+      #info <- substitute(ρ[subsc] == cor~star*","~italic(n) == numobs,l)
       as.character(as.expression(info))
       
 }

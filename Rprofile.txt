@@ -1,0 +1,34 @@
+## this is Christine's .Rprofile startup customized script
+# this lives as a hidden file (.Rprofile, so not Rprofile.txt) in the user main folder (e.g., /oconn568/)
+
+## .First() run at the start of every R session. 
+# this is really just a shell to run RStartupChristine.r
+
+.First <- function() {
+      
+      # load functions that Christine likes
+      if(file.exists("~/Documents/GITHUB/RStartupChristine.r")){
+            
+            source("~/Documents/GITHUB/RStartupChristine.r")
+            
+            } else {
+            
+            print("Couldn't find RStartupChristine.r, so Christine's functions didn't load.")
+            
+      }
+      
+      # welcome message!
+      cat("\nRrrr! The statistics program for Pirates!\n")
+      # report what happened
+      cat("Successfully loaded .Rprofile at", date(), "\n")
+      
+}
+
+
+## .Last() run at the end of the session
+.Last <- function() {
+      # save command history here?
+      cat("\nGoodbye at ", date(), "\n")
+}
+
+
